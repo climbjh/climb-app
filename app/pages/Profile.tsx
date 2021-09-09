@@ -8,9 +8,6 @@ export default function Profile() {
     return (
         <div>
             <h1>Profile</h1>
-            <Button variant="contained">
-                <Link to="/">Home</Link>
-            </Button>
         </div>
     );
 }

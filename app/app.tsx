@@ -3,13 +3,15 @@
 import { hot } from 'react-hot-loader'; // needs to be before react!
 import React from 'react';
 // import { Account } from '@src/generated';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 
 // local
 import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Areas from './pages/Areas';
 import Routes from './pages/Routes';
+import Climbers from './pages/Climbers';
+import Navbar from './components/Navbar';
 
 // example use of file loader to load image
 // import bassLogo from '@src/assets/images/bass-logo.jpg';
@@ -88,24 +90,31 @@ class App extends React.Component {
     //     </div>
     //   );
     // }
+
     public render() {
         return (
-            <Router>
-                <Switch>
-                    <Route path="/apex/climb_app/profile">
-                        <Profile />
-                    </Route>
-                    <Route path="/apex/climb_app/areas">
-                        <Areas />
-                    </Route>
-                    <Route path="/apex/climb_app/routes">
-                        <Routes />
-                    </Route>
-                    <Route path="/">
-                        <Home />
-                    </Route>
-                </Switch>
-            </Router>
+            <>
+                <Router>
+                    <Navbar />
+                    <Switch>
+                        <Route path="/apex/climb_app/areas">
+                            <Areas />
+                        </Route>
+                        <Route path="/apex/climb_app/routes">
+                            <Routes />
+                        </Route>
+                        <Route path="/apex/climb_app/climbers">
+                            <Climbers />
+                        </Route>
+                        <Route path="/apex/climb_app/profile/:climber_id">
+                            <Profile />
+                        </Route>
+                        <Route path="/">
+                            <Home />
+                        </Route>
+                    </Switch>
+                </Router>
+            </>
         );
     }
 }

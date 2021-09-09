@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 import Button from '@material-ui/core/Button';
 
-export default function Areas() {
+export default function Climbers() {
     return (
         <div>
-            <h1>Areas</h1>
+            <h1>Climbers</h1>
         </div>
     );
 }

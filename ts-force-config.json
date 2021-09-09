@@ -3,6 +3,13 @@
   "auth": {
     "username": "climbjh@cunning-bear-5dbb3q.com"
   },
-  "sObjects": ["Account", "Contact"],
+  "sObjects": [
+    "Account",
+    "Contact",
+    "Climber__c",
+    "Climbing_Area__c",
+    "Favorite__c",
+    "Route__c"
+  ],
   "outPath": "./app/generated"
 }
