@@ -38,19 +38,19 @@ export default function Navbar() {
         <div>
             <AppBar position="static" className={classes.root}>
                 <Toolbar>
-                    <Grid container direction="row">
+                    <Grid container direction="row" alignItems="center">
                         <Grid item xs={2}>
                             <NavLink className={selected == 'Home' ? classes.selectedLink : classes.link} to="/" onClick={() => setSelected('Home')}>
-                                <HomeIcon />
+                                <HomeIcon fontSize="large" />
                             </NavLink>
                         </Grid>
                         <Grid item xs={true}>
-                            <Grid container direction="row" spacing={10} justify="center">
+                            <Grid container direction="row" spacing={10} justifyContent="center">
                                 <Grid item>
                                     <Typography variant="h6">
                                         <NavLink
                                             className={selected == 'Areas' ? classes.selectedLink : classes.link}
-                                            to="/apex/climb_app/areas"
+                                            to="/areas"
                                             onClick={() => setSelected('Areas')}
                                         >
                                             AREAS
@@ -61,7 +61,7 @@ export default function Navbar() {
                                     <Typography variant="h6">
                                         <NavLink
                                             className={selected == 'Routes' ? classes.selectedLink : classes.link}
-                                            to="/apex/climb_app/routes"
+                                            to="/routes"
                                             onClick={() => setSelected('Routes')}
                                         >
                                             ROUTES
@@ -72,7 +72,7 @@ export default function Navbar() {
                                     <Typography variant="h6">
                                         <NavLink
                                             className={selected == 'Climbers' ? classes.selectedLink : classes.link}
-                                            to="/apex/climb_app/climbers"
+                                            to="/climbers"
                                             onClick={() => setSelected('Climbers')}
                                         >
                                             CLIMBERS

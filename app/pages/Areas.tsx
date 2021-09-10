@@ -1,13 +1,20 @@
 /* eslint-disable no-unused-expressions */
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { ClimbingArea as Area } from '@src/generated';
 
 import Button from '@material-ui/core/Button';
 
 export default function Areas() {
-    return (
-        <div>
-            <h1>Areas</h1>
-        </div>
-    );
+    const [areas, setAreas] = useState([]);
+
+    const getAreas = async () => {
+        const a: Area[] = await Area.retrieve((f) => ({ select: f.select('id', 'name', 'state') }));
+        setAreas(a);
+    };
+
+    useEffect(() => {
+        getAreas();
+    }, []);
+
+    return <div>{areas && areas.map((area) => <h1>{area.name}</h1>)}</div>;
 }

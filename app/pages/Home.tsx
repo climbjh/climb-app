@@ -1,17 +1,59 @@
 /* eslint-disable no-unused-expressions */
-import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { Route } from '@src/generated';
+import React, { useState, useEffect } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import { ClimbingArea as Area } from '@src/generated';
 
+import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+
+import cirqueImage from '@src/assets/images/cirque.jpeg';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        maxHeight: '400px',
+        alignItems: 'center',
+    },
+    marginTop: {
+        marginTop: theme.spacing(2),
+    },
+}));
+
+// interface AppState {
+//     area: Area;
+// }
 
 export default function Home() {
+    const classes = useStyles();
+
+    const [areas, setAreas] = useState([]);
+
+    const getAreas = async () => {
+        const a: Area[] = await Area.retrieve((f) => ({ select: f.select('id', 'name', 'state') }));
+        setAreas(a);
+    };
+
+    useEffect(() => {
+        getAreas();
+    }, []);
+
     return (
         <div>
-            <Typography variant="h4" gutterBottom>
-                Home Page Fools
-            </Typography>
+            <Grid container direction="column" alignItems="center">
+                <Grid item className={classes.marginTop}>
+                    <Typography variant="h3" color="textSecondary">
+                        The Climbing Project
+                    </Typography>
+                </Grid>
+                <Grid item className={classes.marginTop}>
+                    <img className={classes.root} src={cirqueImage} />
+                </Grid>
+                {areas &&
+                    areas.map((area) => (
+                        <Grid item>
+                            <h1>{area.name}</h1>
+                        </Grid>
+                    ))}
+            </Grid>
         </div>
     );
 }

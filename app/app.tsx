@@ -3,6 +3,7 @@
 import { hot } from 'react-hot-loader'; // needs to be before react!
 import React from 'react';
 // import { Account } from '@src/generated';
+import { ClimbingArea as Area } from '@src/generated';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 
 // local
@@ -21,7 +22,7 @@ import Navbar from './components/Navbar';
 //   drawerVisible: boolean;
 // }
 
-class App extends React.Component {
+const App = () => {
     // constructor(props: any) {
     //   super(props);
     //   this.state = {
@@ -49,7 +50,11 @@ class App extends React.Component {
     //     this.setState({ acc: accs[0] });
     //   }
     // }
-
+    // const getAreas = () => {
+    //     const areas = await Area.retrieve((f) => ({
+    //         select: f.select('id', 'name'),
+    //     }));
+    // };
     // public render() {
     //   return (
     //     <Card title='B.A.S.S.'>
@@ -91,32 +96,30 @@ class App extends React.Component {
     //   );
     // }
 
-    public render() {
-        return (
-            <>
-                <Router>
-                    <Navbar />
-                    <Switch>
-                        <Route path="/apex/climb_app/areas">
-                            <Areas />
-                        </Route>
-                        <Route path="/apex/climb_app/routes">
-                            <Routes />
-                        </Route>
-                        <Route path="/apex/climb_app/climbers">
-                            <Climbers />
-                        </Route>
-                        <Route path="/apex/climb_app/profile/:climber_id">
-                            <Profile />
-                        </Route>
-                        <Route path="/">
-                            <Home />
-                        </Route>
-                    </Switch>
-                </Router>
-            </>
-        );
-    }
-}
+    return (
+        <>
+            <Router>
+                <Navbar />
+                <Switch>
+                    <Route exact path="/areas">
+                        <Areas />
+                    </Route>
+                    <Route exact path="/routes">
+                        <Routes />
+                    </Route>
+                    <Route exact path="/climbers">
+                        <Climbers />
+                    </Route>
+                    <Route path="/climbers/:climber_id">
+                        <Profile />
+                    </Route>
+                    <Route exact path="/">
+                        <Home />
+                    </Route>
+                </Switch>
+            </Router>
+        </>
+    );
+};
 
 export default hot(module)(App);
