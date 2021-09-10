@@ -13,6 +13,7 @@ import Areas from './pages/Areas';
 import Routes from './pages/Routes';
 import Climbers from './pages/Climbers';
 import Navbar from './components/Navbar';
+import RouteDetailPage from './pages/RouteDetailPage';
 
 // example use of file loader to load image
 // import bassLogo from '@src/assets/images/bass-logo.jpg';
@@ -106,6 +107,9 @@ const App = () => {
                     </Route>
                     <Route exact path="/routes">
                         <Routes />
+                    </Route>
+                    <Route path="/routes/:route_id">
+                        <RouteDetailPage />
                     </Route>
                     <Route exact path="/climbers">
                         <Climbers />

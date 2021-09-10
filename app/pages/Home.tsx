@@ -48,8 +48,8 @@ export default function Home() {
                     <img className={classes.root} src={cirqueImage} />
                 </Grid>
                 {areas &&
-                    areas.map((area) => (
-                        <Grid item>
+                    areas.map((area, i) => (
+                        <Grid item key={i}>
                             <h1>{area.name}</h1>
                         </Grid>
                     ))}

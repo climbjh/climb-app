@@ -16,5 +16,14 @@ export default function Areas() {
         getAreas();
     }, []);
 
-    return <div>{areas && areas.map((area) => <h1>{area.name}</h1>)}</div>;
+    return (
+        <div>
+            {areas &&
+                areas.map((area, i) => (
+                    <h1 key={i}>
+                        {area.name} [{area.state}]
+                    </h1>
+                ))}
+        </div>
+    );
 }
