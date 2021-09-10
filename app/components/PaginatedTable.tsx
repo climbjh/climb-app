@@ -29,9 +29,10 @@ const useStyles = makeStyles((theme) => ({
 
 type TableProps = {
     data: Route[] | Climber[] | ClimbingArea[];
+    columns: string[];
 };
 
-const PaginatedTable = ({ data }: TableProps) => {
+const PaginatedTable = ({ data, columns }: TableProps) => {
     const classes = useStyles();
 
     const [order, setOrder] = useState('asc');
@@ -63,12 +64,11 @@ const PaginatedTable = ({ data }: TableProps) => {
                 <TableContainer>
                     <Table size="medium">
                         <TableHead>
-                            <TableCell>
-                                <Typography variant="h6">Name</Typography>
-                            </TableCell>
-                            <TableCell>
-                                <Typography variant="h6">Grade</Typography>
-                            </TableCell>
+                            {columns.map((col, i) => (
+                                <TableCell key={i}>
+                                    <Typography variant="h6">{col}</Typography>
+                                </TableCell>
+                            ))}
                         </TableHead>
                         <TableBody>
                             {data &&

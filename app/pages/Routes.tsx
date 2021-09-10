@@ -13,6 +13,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+const columnHeads = ['Name', 'Grade'];
+
 export default function Routes() {
     const [routes, setRoutes] = useState([]);
 
@@ -32,7 +34,7 @@ export default function Routes() {
             <Grid container direction="row">
                 <Grid item xs={1} />
                 <Grid item xs={11}>
-                    <PaginatedTable data={routes} />
+                    <PaginatedTable data={routes} columns={columnHeads} />
                 </Grid>
                 <Grid item xs={2} />
             </Grid>
