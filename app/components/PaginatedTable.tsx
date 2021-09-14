@@ -28,11 +28,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 type TableProps = {
-    data: Route[] | Climber[] | ClimbingArea[];
+    records: Route[] | Climber[] | ClimbingArea[];
     columns: string[];
+    dataPoints: string[];
 };
 
-const PaginatedTable = ({ data, columns }: TableProps) => {
+const PaginatedTable = ({ records, columns, dataPoints }: TableProps) => {
     const classes = useStyles();
 
     const [order, setOrder] = useState('asc');
@@ -71,8 +72,8 @@ const PaginatedTable = ({ data, columns }: TableProps) => {
                             ))}
                         </TableHead>
                         <TableBody>
-                            {data &&
-                                data.map((row, i) => (
+                            {records &&
+                                records.map((row, i) => (
                                     <TableRow
                                         key={i}
                                         hover
@@ -80,8 +81,9 @@ const PaginatedTable = ({ data, columns }: TableProps) => {
                                         tabIndex={1}
                                         // selected={isItemSelected}
                                     >
-                                        <TableCell>{row.name}</TableCell>
-                                        <TableCell>{row.grade}</TableCell>
+                                        {dataPoints.map((data, i) => (
+                                            <TableCell key={i}>{row[data]}</TableCell>
+                                        ))}
                                     </TableRow>
                                 ))}
                         </TableBody>

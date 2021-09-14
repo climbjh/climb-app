@@ -13,7 +13,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const columnHeads = ['Name', 'Grade'];
+const columnHeads = ['Id', 'Name', 'Grade', 'Height'];
+const dataPoints = ['id', 'name', 'grade', 'height'];
 
 export default function Routes() {
     const [routes, setRoutes] = useState([]);
@@ -21,7 +22,7 @@ export default function Routes() {
     const classes = useStyles();
 
     const getAreas = async () => {
-        const r: Route[] = await Route.retrieve((f) => ({ select: f.select('id', 'name', 'grade') }));
+        const r: Route[] = await Route.retrieve((f) => ({ select: f.select(dataPoints) }));
         setRoutes(r);
     };
 
@@ -34,7 +35,7 @@ export default function Routes() {
             <Grid container direction="row">
                 <Grid item xs={1} />
                 <Grid item xs={11}>
-                    <PaginatedTable data={routes} columns={columnHeads} />
+                    <PaginatedTable records={routes} columns={columnHeads} dataPoints={dataPoints} />
                 </Grid>
                 <Grid item xs={2} />
             </Grid>
