@@ -124,11 +124,11 @@ const PaginatedTable = ({ records, columns }: TableProps) => {
         setOrderBy(property);
     };
 
-    const handleClick = (event: any, id: any) => {
+    const handleClick = (id: any) => {
         history.push(`${location.pathname}/${id}`);
     };
 
-    const handleChangePage = (event: any, newPage: any) => {
+    const handleChangePage = (event:any, newPage: any) => {
         setPage(newPage);
     };
 
@@ -142,13 +142,6 @@ const PaginatedTable = ({ records, columns }: TableProps) => {
             <Paper>
                 <TableContainer>
                     <Table size="medium">
-                        {/* <TableHead>
-                            {columns.map((col, i) => (
-                                <TableCell key={i}>
-                                    <Typography variant="h6">{col}</Typography>
-                                </TableCell>
-                            ))}
-                        </TableHead> */}
                         <EnhancedTableHead
                             classes={classes}
                             order={order}
@@ -162,7 +155,7 @@ const PaginatedTable = ({ records, columns }: TableProps) => {
                                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map((row: any, i: any) => {
                                     return (
-                                        <TableRow key={i} hover onClick={(e) => handleClick(e, row.id)} tabIndex={1} className={classes.pointer}>
+                                        <TableRow key={i} hover onClick={(e) => handleClick(row.id)} tabIndex={1} className={classes.pointer}>
                                             {columns.map((data, i) => (
                                                 <TableCell key={i}>{row[data.api]}</TableCell>
                                             ))}
